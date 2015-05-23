@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+
+  "name": "Launchify",
+  "description": "This extension allows create and manage sets of pages that can be simulatinously launched", 
+  "version": "1.0",
+  "icons":{ 
+    "16": "Converter-icon.png",
+    "48": "Converter-icon.png",
+    "128":"Converter-icon.png" },
+  "author": "Jonathan Lee",
+  "browser_action": {
+    "default_icon": "Converter-icon.png",
+    "default_popup": "popup.html",
+    "default_title": "Launchify"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
