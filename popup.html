@@ -1,66 +1,79 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
+
+<head>
     <title>Unit Converter</title>
-      <link rel="stylesheet" type="text/css" href="popup.css">
-     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  </head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="popup.css">
+    <script src="jquery-2.1.4.min.js"></script>
 
-  <body id ="body" >     
-    <div class = "container">
-      <div class = "main_activity">
-      <b>Launchify</b>
-      <br>
-<div id="content">
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-        <li class="active"><a href="#red" data-toggle="tab">Red</a></li>
-        <li><a href="#orange" data-toggle="tab">Orange</a></li>
-        <li><a href="#yellow" data-toggle="tab">Yellow</a></li>
-        <li><a href="#green" data-toggle="tab">Green</a></li>
-        <li><a href="#blue" data-toggle="tab">Blue</a></li>
-    </ul>
-    <div id="my-tab-content" class="tab-content">
-        <div class="tab-pane active" id="red">
-            <h1>Red</h1>
-            <p>red red red red red red</p>
+
+</head>
+
+<body id="body">
+    <div class="container">
+        <div class="main_activity">
+            <b>Launchify</b>
+            <br>
+            <div id="content">
+                <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                    <li class="active"><a href="#red" data-toggle="tab">Set One</a>
+                    </li>
+                    <li><a href="#orange" data-toggle="tab">Set Two</a>
+                    </li>
+                    <li><a href="#yellow" data-toggle="tab">Set Three</a>
+                    </li>
+                    <li><a href="#green" data-toggle="tab">Set Four</a>
+                    </li>
+
+                </ul>
+                <div id="my-tab-content" class="tab-content">
+                    <div class="tab-pane active" id="red">
+                        <h1>Set One</h1>
+                        
+                        <input type="text"></input>
+                        <input type="text"></input>
+                        <input type="text"></input>
+
+                    </div>
+                    <div class="tab-pane" id="orange">
+                        <h1>Set Two</h1>
+                        
+                        <input type="text"></input>
+                        <input type="text"></input>
+                        <input type="text"></input>
+
+                    </div>
+                    <div class="tab-pane" id="yellow">
+                        <h1>Set Three</h1>
+
+                        <input type="text"></input>
+                        <input type="text"></input>
+                        <input type="text"></input>
+                        
+                    </div>
+                    <div class="tab-pane" id="green">
+                        <h1>Set Four</h1>
+
+                        <input type="text"></input>
+                        <input type="text"></input>
+                        <input type="text"></input>
+                        <input type="text"></input>
+
+                    </div>
+                </div>
+            </div>
+
+            <button id="clearInputs">Launchify</button>
+            <script src="popup.js"></script>
+            <script src="urinal.js"></script>
+
+            <!-- end main active -->
         </div>
-        <div class="tab-pane" id="orange">
-            <h1>Orange</h1>
-            <p>orange orange orange orange orange</p>
-        </div>
-        <div class="tab-pane" id="yellow">
-            <h1>Yellow</h1>
-            <p>yellow yellow yellow yellow yellow</p>
-        </div>
-        <div class="tab-pane" id="green">
-            <h1>Green</h1>
-            <p>green green green green green</p>
-        </div>
-        <div class="tab-pane" id="blue">
-            <h1>Blue</h1>
-            <p>blue blue blue blue blue</p>
-        </div>
+        <!-- end container  -->
+
     </div>
-</div>
- 
- 
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $('#tabs').tab();
-    });
-</script>    
 
- 
+</body>
 
-
-        
-          <button id="clearInputs">Launchify</button>
-          <script src="popup.js"></script>
-          
-      <!-- end main active -->
-    </div> <!-- end container  -->
-
-</div>
-  </body>
-</html> 
+</html>
