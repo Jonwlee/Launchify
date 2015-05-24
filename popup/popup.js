@@ -13,56 +13,97 @@ $(document).ready(function () {
 
 	//Load page
 	loadPage();
+
+	//Dynamically add click handler
+	$(document).on('submit', ".form" , handleFormSubmit);
 });
 
 function loadPage() {
 	chrome.storage.sync.get('sets', function(result) {
 		var sets = result.sets;
-
+		console.log(sets);
+		//If sets does not exist, create it and push
 		if (typeof result === "undefined" || typeof sets === "undefined") {
 			sets = [];
-			result = {sets: sets};
-			chrome.storage.sync.set({'sets':result}, function() {
+			result.sets = sets;
+
+			chrome.storage.sync.set(result, function() {
 				console.log("added");
 			});
 		}
-		//Generate tabs html
-		var tabsHTML = new EJS({url: 'tabs.ejs'}).render(result);
-		
-		//Insert into page
-		$("#content").html(tabsHTML);
 
-		//Add event handler
-		console.log($("#addSetButton"));
-		$("#addSetButton a").off("click");
-		$("#addSetButton a").click(newSetClick);
+		//Generate tabs html
+		console.log(result);
+		new EJS({url: 'tabs.ejs'}).update($("#content")[0], {sets:sets});
+
+		//Add event handler for adding set
+		var addSetButton = $("#addSetButton");
+		addSetButton.off("click");
+		addSetButton.click(handleNewSet);
 	});
 }
 
-function newSetClick () {
-	console.log("click");
-	var newName = promt("Please enter name for set", "Social Networks");
+function handleNewSet () {
+	var newName = prompt("Please enter name for set", "Social Networks");
 	createSet(newName, function() {
 		loadPage();
 	});
 }
 
+function handleFormSubmit (event) {
+	console.log("hafjk");
+	var inputs = $(this).children("input");
+
+	chrome.storage.sync.get('sets', function(result) {
+		var sites = [];
+		for (var i = inputs.length - 1; i >= 0; i--) {
+			sites.push($(inputs[i]).val());
+		};
+
+		var sets = result.sets;
+		sets.sites = sites;
+		result.sets = sets;
+		console.log("gotttt");
+		console.log(result);
+		chrome.storage.sync.set(result, function() {
+			loadPage();
+			console.log("added");
+		});
+	});
+
+	console.log("hey now borasdfasdf");
+	event.preventDefault();
+	event.stopImmediatePropagation();
+}
+
 function createSet (name, callback) { 
 	chrome.storage.sync.get('sets', function(result){
-		var sets = result.sets;
+		var sets = result.sets;	
+		console.log("creating new set");
+		console.log(sets);
 
 		//Init sets if undefined
-		if (typeof sets === "undefined") 
+		if (typeof sets === "undefined") {
 			sets = [];
+			console.log("undef")
+		}
 
 		//Add new set to sets
-		sets.push({name:name, sites:[]});
+		var set = new Set(name);
+		sets.push(set);
+		console.log(sets);
 
 		//Save sets
-		result = {sets: sets};
-		chrome.storage.sync.set({'sets':result}, callback);
+		result.sets = sets;
+		chrome.storage.sync.set(result, callback);
 	});
 }
+
+function Set (name) {
+	this.name = name;
+	this.sites = [];
+}
+
 
 // document.getElementById('content').addEventListener('onLoad', #tabs );
 
