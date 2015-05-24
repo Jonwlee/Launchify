@@ -8,6 +8,8 @@ var launchStorageKey = "launches";
 // 	"sites": ["twitter.com","google.com"]
 // }]
 
+
+
 $(document).ready(function () {
 	$('#tabs').tab();
 
@@ -16,8 +18,8 @@ $(document).ready(function () {
 		if (typeof items.sets === "undefined") {
 			items.sets = [];
 			chrome.storage.set({launchStorageKey: items.sets});
-			
-		};
+		}
+		var tabsHTML = new EJS({url: 'cleaning.ejs'}).render(items.sets); 
 		console.log(sets);
 	});
 

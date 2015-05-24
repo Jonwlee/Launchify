@@ -1,0 +1,20 @@
+<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+	<% for(var i = 1; i<=sets.length; i++) {%>		
+		<li <% if (i == 1) { %> class="active" <% } %> >
+			<a href="<%= sets[i].name %>" data-toggle="tab"><%= sets[i].name %></a>
+		</li>
+	<% } %>
+	<li><a href="#addSet" data-toggle="tab">+</a></li>
+</ul>
+
+<div id="my-tab-content" class="tab-content">
+	<% for(var i = 1; i<=sets.length; i++) {%>
+		<div class="tab-pane active" id="<%= sets[i].name %>">
+			<h1>Set <%= i %></h1>
+			<% for(var j = 1; j<=sets[i].sites.length; j++) {%>
+				<input type="text"><%= sets[i].sites[j] %></input>
+			<% } %>
+		</div>
+	<% } %>
+	 <div class="tab-pane" id="addSet">
+</div>
