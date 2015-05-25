@@ -14,11 +14,12 @@
 			<h1>Set <%= i %></h1>
 			<form class="form">
 				<% for(var j = 0; j<sets[i].sites.length; j++) {%>
-					<input class="siteUrl" type="text" placeholder="Add site url"><%= sets[i].sites[j] %></input>
+					<input class="siteUrl" type="text" id ="urler" placeholder="Add site url"><%= sets[i].sites[j] %></input>
 				<% } %>
-				<input class="no-save" type="text" placeholder="Add site url"></input>
-				<li><a id="addInputButton" href="#addInputButton" placeholder = "Add site url" data-toggle="input">+</a></li>
+				<input class="no-save" type="text" id = "urler" placeholder="Add site url"></input>
+				<li><a id="addInputButton" href="#addInputButton" data-toggle="input">+</a></li>
 			</form>
+			<button id="launchbutt">Launchify</button>
 		</div>
 	<% } %>
 </div>

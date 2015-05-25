@@ -46,6 +46,10 @@ function loadPage() {
 		var addInputButton = $("#addInputButton");
 		addInputButton.off("click");
 		addInputButton.click(createInput);
+
+		var addLaunchify = $("#Launchbutt");
+		addLaunchify.off("click");
+		addLaunchify.click(createNewUrlTab);
 	});
 }
 
@@ -125,6 +129,15 @@ content.appendChild(input);
 input.placeholder = "Add site url"; // put it into the DOM
 
 } 
+
+
+
+function createNewUrlTab(){
+	var url = document.getElementById('urler').value ;
+chrome.tabs.create({'url': chrome.extension.getURL('urler')})
+} ;
+
+
 
 
 // document.getElementById('content').addEventListener('onLoad', #tabs );
