@@ -97,7 +97,7 @@ input[type="button"] {
     padding: 10px 16px;
     font-size: 18px;
     border-radius: 6px;
-    float: left;
+    float: top;
 }
 select {
     height: 30px;
@@ -151,3 +151,14 @@ div.tabContent {
     background-color: #f1f0ee;
 }
 div.tabContent.hide { display: none }
+
+li { display: inline }
+li a {
+    color: #42454a;
+    background-color: #dedbde;
+    border: 1px solid #c9c3ba;
+    border-bottom: none;
+    padding: 0.3em;
+    text-decoration: none;
+    
+}

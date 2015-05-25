@@ -40,15 +40,23 @@ function loadPage() {
 		var addSetButton = $("#addSetButton");
 		addSetButton.off("click");
 		addSetButton.click(handleNewSet);
+
+		//event handler for add input button
+
+		var addInputButton = $("#addInputButton");
+		addInputButton.off("click");
+		addInputButton.click(createInput);
 	});
 }
 
+//create new sets
 function handleNewSet () {
 	var newName = prompt("Please enter name for set", "Social Networks");
 	createSet(newName, function() {
 		loadPage();
 	});
 }
+
 
 function handleFormSubmit (event) {
 	console.log("hafjk");
@@ -103,6 +111,20 @@ function Set (name) {
 	this.name = name;
 	this.sites = [];
 }
+
+function createInput () { 
+
+
+		//Init sets if undefined
+	
+
+var input = document.createElement("input");
+input.type = "text";
+input.className = "siteUrl"; // set the CSS class
+content.appendChild(input);
+input.placeholder = "Add site url"; // put it into the DOM
+
+} 
 
 
 // document.getElementById('content').addEventListener('onLoad', #tabs );
