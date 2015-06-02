@@ -47,7 +47,7 @@ function loadPage() {
 		addInputButton.off("click");
 		addInputButton.click(createInput);
 
-		var addLaunchify = $("#Launchbutt");
+		var addLaunchify = $("#launchbutt");
 		addLaunchify.off("click");
 		addLaunchify.click(createNewUrlTab);
 	});
@@ -133,8 +133,13 @@ input.placeholder = "Add site url"; // put it into the DOM
 
 
 function createNewUrlTab(){
-	var url = document.getElementById('urler').value ;
-chrome.tabs.create({'url': chrome.extension.getURL('urler')})
+	var url = document.getElementById('siteUrl').value ;
+chrome.tabs.create(
+	
+	{'url': url }
+	)
+console.log("new url mang");
+
 } ;
 
 
