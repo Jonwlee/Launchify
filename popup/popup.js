@@ -1,150 +1,133 @@
-var launchStorageKey = "launches";
-// [{
-// 	"name": "Step one"
-// 	"sites": ["twitter.com","google.com"]
-// },
-// {
-// 	"name": "Step one"
-// 	"sites": ["twitter.com","google.com"]
-// }]
+   var urlA1 = document.getElementById('siteUrlA1').value;
+   var urlA2 = document.getElementById('siteUrlA2').value;
+   var urlA3 = document.getElementById('siteUrlA3').value;
+   var urlA4 = document.getElementById('siteUrlA4').value;
+   var urlA5 = document.getElementById('siteUrlA5').value;
 
-$(document).ready(function() {
-    $('#tabs').tab();
+   var urlB1 = document.getElementById('siteUrlB1').value;
+   var urlB2 = document.getElementById('siteUrlB2').value;
+   var urlB3 = document.getElementById('siteUrlB3').value;
+   var urlB4 = document.getElementById('siteUrlB4').value;
+   var urlB5 = document.getElementById('siteUrlB5').value;
 
-    //Load page
-    loadPage();
-
-    //Dynamically add click handler
-    $(document).on('submit', ".form", handleFormSubmit);
-});
-
-function loadPage() {
-    chrome.storage.sync.get('sets', function(result) {
-        var sets = result.sets;
-        console.log(sets);
-        //If sets does not exist, create it and push
-        if (typeof result === "undefined" || typeof sets === "undefined") {
-            sets = [];
-            result.sets = sets;
-
-            chrome.storage.sync.set(result, function() {
-                console.log("added");
-            });
-        }
-
-        //Generate tabs html
-        console.log(result);
-        new EJS({
-            url: 'tabs.ejs'
-        }).update($("#content")[0], {
-            sets: sets
-        });
-
-        //Add event handler for adding set
-        var addSetButton = $("#addSetButton");
-        addSetButton.off("click");
-        addSetButton.click(handleNewSet);
-
-        //event handler for add input button
-
-        var addInputButton = $("#addInputButton");
-        addInputButton.off("click");
-        addInputButton.click(createInput);
-
-        var addLaunchify = $("#launchbutt");
-        addLaunchify.off("click");
-        addLaunchify.click(createNewUrlTab);
-    });
-}
-
-//create new sets
-function handleNewSet() {
-    var newName = prompt("Please enter name for set", "Social Networks");
-    createSet(newName, function() {
-        loadPage();
-    });
-}
+   var urlC1 = document.getElementById('siteUrlC1').value;
+   var urlC2 = document.getElementById('siteUrlC2').value;
+   var urlC3 = document.getElementById('siteUrlC3').value;
+   var urlC4 = document.getElementById('siteUrlC4').value;
+   var urlC5 = document.getElementById('siteUrlC5').value;
 
 
-function handleFormSubmit(event) {
-    console.log("hafjk");
-    var inputs = $(this).children("input");
-
-    chrome.storage.sync.get('sets', function(result) {
-        var sites = [];
-        for (var i = inputs.length - 1; i >= 0; i--) {
-            sites.push($(inputs[i]).val());
-        };
-
-        var sets = result.sets;
-        sets.sites = sites;
-        result.sets = sets;
-        console.log("gotttt");
-        console.log(result);
-        chrome.storage.sync.set(result, function() {
-            loadPage();
-            console.log("added");
-        });
-    });
-
-    console.log("hey now borasdfasdf");
-    event.preventDefault();
-    event.stopImmediatePropagation();
-}
-
-function createSet(name, callback) {
-    chrome.storage.sync.get('sets', function(result) {
-        var sets = result.sets;
-        console.log("creating new set");
-        console.log(sets);
-
-        //Init sets if undefined
-        if (typeof sets === "undefined") {
-            sets = [];
-            console.log("undef")
-        }
-
-        //Add new set to sets
-        var set = new Set(name);
-        sets.push(set);
-        console.log(sets);
-
-        //Save sets
-        result.sets = sets;
-        chrome.storage.sync.set(result, callback);
-    });
-}
-
-function Set(name) {
-    this.name = name;
-    this.sites = [];
-}
-
-function createInput() {
 
 
-    //Init sets if undefined
+   function launchifyA() {
 
-    var input = document.createElement("input");
-    input.type = "text";
-    input.className = "siteUrl"; // set the CSS class
-    content.appendChild(input);
-    input.placeholder = "Add site url"; // put it into the DOM
+       chrome.tabs.create(
 
-}
+           {
+               'url': urlA1
+           }
+       )
+       chrome.tabs.create(
 
-function createNewUrlTab() {
-    var url = document.getElementById('siteUrl').value;
-    chrome.tabs.create(
+           {
+               'url': urlA2
+           }
+       )
+       chrome.tabs.create(
 
-        {
-            'url': url
-        }
-    )
-    console.log("new url mang");
+           {
+               'url': urlA3
+           }
+       )
+       chrome.tabs.create(
 
-};
+           {
+               'url': urlA4
+           }
+       )
+       chrome.tabs.create(
 
-// document.getElementById('content').addEventListener('onLoad', #tabs );
+           {
+               'url': urlA5
+           }
+       )
+       console.log("new urls A");
 
-// document.getElementById('launchbutt').addEventListener('onClick', launchify);
+   };
+
+   function launchifyB() {
+
+       chrome.tabs.create(
+
+           {
+               'url': urlB1
+           }
+       )
+       chrome.tabs.create(
+
+           {
+               'url': urlB2
+           }
+       )
+       chrome.tabs.create(
+
+           {
+               'url': urlB3
+           }
+       )
+       chrome.tabs.create(
+
+           {
+               'url': urlB4
+           }
+       )
+       chrome.tabs.create(
+
+           {
+               'url': urlB5
+           }
+       )
+       console.log("new urls B");
+
+   };
+
+   function launchifyC() {
+
+       chrome.tabs.create(
+
+           {
+               'url': urlC1
+           }
+       )
+       chrome.tabs.create(
+
+           {
+               'url': urlC2
+           }
+       )
+       chrome.tabs.create(
+
+           {
+               'url': urlC3
+           }
+       )
+       chrome.tabs.create(
+
+           {
+               'url': urlC4
+           }
+       )
+       chrome.tabs.create(
+
+           {
+               'url': urlC5
+           }
+       )
+       console.log("new urls C");
+
+   };
+
+
+   document.getElementById('launcherA').addEventListener('onClick', launchifyA);
+   document.getElementById('launcherB').addEventListener('onClick', launchifyB);
+   document.getElementById('launcherC').addEventListener('onClick', launchifyC);
